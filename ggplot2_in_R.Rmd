@@ -1,0 +1,32 @@
+---
+title: "ggplot"
+author: "Taniya"
+date: "April 9, 2020"
+output: pdf_document
+---
+
+## set the working directory
+setwd("C:/Users/taniy/Desktop/GitHub/R Programming")
+getwd()
+
+##read your file - ketchup dataset 
+ketchup <- read.csv("ketmk1l.csv")
+View(ketchup)
+
+## install ggplot2 package
+install.packages("ggplot2")
+library(ggplot2)
+
+# list the variables in mydata
+names(ketchup)
+
+# print first 10 rows of mydata
+head(ketchup, n=10)
+
+attach(ketchup)
+
+##built a scatterplot to show correlation using ggplot2 
+##Total amount spent by the household vs Total number of purchases made by that household in the data
+
+g1 <-ggplot(data = ketchup, mapping = aes(x=TOTP, y=AMT)) + geom_point()+ geom_smooth(method="lm")
+g1 + ggtitle("TotalPurchases vs total dollars spend by the household", subtitle="From ketchup dataset") + xlab("TotalPurchase") + ylab("TotalAmountSpent")
